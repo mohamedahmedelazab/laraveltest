@@ -51,14 +51,22 @@ void requestPermission() async{
           ),
           centerTitle: true,
         ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.post_add_sharp),onPressed: (){
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.post_add_sharp),onPressed: () async {
     showDialog(context: context, builder: (BuildContext context) => AddPost());
+    await FirebaseMessaging.instance.getToken().then((value) => print(value));
 
   },),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              InkWell(
+                onTap: (){
+
+
+                },
+                child: Text("Goto Animation"),
+              ),
               InkWell(
                 onTap: (){
                   Navigator.of(context).push(MaterialPageRoute(
